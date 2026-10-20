@@ -1,0 +1,78 @@
+{
+  "name": "genpark-agentic-commerce-perishable-inventory-markdown-decay-skill",
+  "version": "1.0.0",
+  "title": "Perishable Inventory Dynamic Markdown & Yield Optimizer Skill",
+  "description": "Real-time price markdown optimization for shelf-life decaying SKUs (fresh produce, airline tickets, event seats), dynamic reservation price clearance, and margin preservation. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "markdown-pricing",
+    "perishable-inventory",
+    "yield-management",
+    "clearance-optimization",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "calculate_dynamic_markdown_price",
+      "description": "Compute the revenue-maximizing discount percentage for decaying inventory based on days to expiry, current sell-through velocity, and salvage floor.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "original_retail_price": {
+            "type": "number"
+          },
+          "cost_basis": {
+            "type": "number"
+          },
+          "current_stock_units": {
+            "type": "integer"
+          },
+          "days_until_expiration": {
+            "type": "integer"
+          },
+          "current_daily_sales_velocity": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "original_retail_price",
+          "cost_basis",
+          "current_stock_units",
+          "days_until_expiration",
+          "current_daily_sales_velocity"
+        ]
+      }
+    },
+    {
+      "name": "generate_clearance_flash_campaign",
+      "description": "Synthesize a multi-channel inventory clearance campaign (app push, shelf digital tag, discount bundle) to zero out stock before write-off.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sku_id": {
+            "type": "string"
+          },
+          "recommended_discount_pct": {
+            "type": "number"
+          },
+          "units_at_risk": {
+            "type": "integer"
+          },
+          "hours_remaining": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sku_id",
+          "recommended_discount_pct",
+          "units_at_risk",
+          "hours_remaining"
+        ]
+      }
+    }
+  ]
+}
